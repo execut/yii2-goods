@@ -7,10 +7,7 @@
         "yiisoft/yii2": "@dev",
         "execut/yii2-actions": "@dev",
         "execut/yii2-migration": "@dev",
-        "kartik-v/yii2-date-range" : "@dev",
-        "unclead/yii2-multiple-input": "@dev",
-        "la-haute-societe/yii2-save-relations-behavior": "@dev",
-        "execut/yii2-attributes-converter": "@dev"
+        "execut/yii2-crud-fields": "@dev"
     },
     "autoload": {
         "psr-4": {
