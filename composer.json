@@ -5,18 +5,16 @@
     "minimum-stability": "dev",
     "require": {
         "yiisoft/yii2": "@dev",
-        "detalika/base": "@dev",
         "execut/yii2-actions": "@dev",
         "execut/yii2-migration": "@dev",
         "kartik-v/yii2-date-range" : "@dev",
         "unclead/yii2-multiple-input": "@dev",
         "la-haute-societe/yii2-save-relations-behavior": "@dev",
-        "yiisoft/yii2-faker": "~2.0.0",
         "execut/yii2-attributes-converter": "@dev"
     },
     "autoload": {
         "psr-4": {
-            "detalika\\goods\\": ""
+            "execut\\goods\\": ""
         }
     }
 }
