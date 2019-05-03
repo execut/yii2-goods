@@ -1,5 +1,5 @@
 {
-    "name": "detalika/goods",
+    "name": "execut/goods",
     "description": "Module for goods administration",
     "type": "yii2-extension",
     "minimum-stability": "dev",
