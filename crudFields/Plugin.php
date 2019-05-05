@@ -15,6 +15,7 @@ class Plugin extends \execut\crudFields\Plugin
                 'class' => HasOneSelect2::class,
                 'attribute' => 'goods_good_id',
                 'relation' => 'good',
+                'module' => 'goods',
                 'url' => [
                     '/goods/goods'
                 ],

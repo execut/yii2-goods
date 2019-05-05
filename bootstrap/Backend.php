@@ -9,11 +9,15 @@
 namespace execut\goods\bootstrap;
 
 use execut\crud\navigation\Configurator;
+use execut\goods\models\Article;
+use execut\goods\models\Brand;
+use execut\goods\models\Good;
 use yii\console\Application;
 use yii\helpers\ArrayHelper;
 
 class Backend extends Common
 {
+    public $isBootstrapI18n = true;
     public function getDefaultDepends() {
         return ArrayHelper::merge(parent::getDefaultDepends(), [
             'bootstrap' => [
@@ -30,19 +34,7 @@ class Backend extends Common
     public function bootstrap($app)
     {
         parent::bootstrap($app);
-        $this->registerTranslations($app);
         $this->bootstrapNavigation($app);
-    }
-
-    public function registerTranslations($app) {
-        $app->i18n->translations['execut/goods'] = [
-            'class' => 'yii\i18n\PhpMessageSource',
-            'sourceLanguage' => 'en-US',
-            'basePath' => '@execut/goods/messages',
-            'fileMap' => [
-                'execut/goods' => 'goods.php',
-            ],
-        ];
     }
 
     /**
@@ -50,9 +42,11 @@ class Backend extends Common
      */
     protected function bootstrapNavigation($app)
     {
-        if ($app instanceof Application || $app->user->isGuest) {
+        $module = $app->getModule('goods');
+        if (!(!$app->user->isGuest && $module->adminRole === '@') && !$app->user->can($module->adminRole)) {
             return;
         }
+
         /**
          * @var Component $navigation
          */
@@ -61,7 +55,7 @@ class Backend extends Common
             'class' => Configurator::class,
             'module' => 'goods',
             'moduleName' => 'Goods',
-            'modelName' => '{n, plural, =0{Goods} =1{Good} other{Goods}}',
+            'modelName' => Good::MODEL_NAME,
             'controller' => 'goods',
         ]);
 
@@ -69,7 +63,7 @@ class Backend extends Common
             'class' => Configurator::class,
             'module' => 'goods',
             'moduleName' => 'Goods',
-            'modelName' => '{n, plural, =0{Articles} =1{Article} other{Articles}}',
+            'modelName' => Article::MODEL_NAME,
             'controller' => 'articles',
         ]);
 
@@ -77,16 +71,8 @@ class Backend extends Common
             'class' => Configurator::class,
             'module' => 'goods',
             'moduleName' => 'Goods',
-            'modelName' => '{n, plural, =0{Brands} =1{Brand} other{Brands}}',
+            'modelName' => Brand::MODEL_NAME,
             'controller' => 'brands',
-        ]);
-
-        $navigation->addConfigurator([
-            'class' => Configurator::class,
-            'module' => 'goods',
-            'moduleName' => 'Goods',
-            'modelName' => '{n, plural, =0{Types} =1{Type} other{Types}}',
-            'controller' => 'type',
         ]);
     }
 }

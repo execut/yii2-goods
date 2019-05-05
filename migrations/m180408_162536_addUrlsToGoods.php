@@ -1,4 +1,5 @@
 <?php
+namespace execut\goods\migrations;
 
 use execut\yii\migration\Migration;
 use execut\yii\migration\Inverter;

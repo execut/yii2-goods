@@ -21,6 +21,7 @@ class ArticlePlugin extends Plugin
                 'class' => HasOneSelect2::class,
                 'url' => ['/goods/articles'],
                 'relation' => 'goodsArticle',
+                'module' => 'goods',
                 'with' => 'goodsArticle.goodsBrand',
                 'attribute' => 'details_article_id',
                 'required' => true,

@@ -24,7 +24,7 @@ class Good extends Widget
         ];
 
         $thumbUrl = [
-            '/images/frontend',
+            '/files/frontend',
             'alias' => $filesFile->alias,
             'extension' => $filesFile->extension,
             'dataAttribute' => 'size_sm',

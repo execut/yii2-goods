@@ -21,6 +21,7 @@ class ShopPlugin extends Plugin
                 'class' => HasOneSelect2::class,
                 'relation' => 'shop',
                 'with' => 'shop',
+                'module' => 'goods',
                 'attribute' => 'shop_id',
                 'required' => true,
             ],
