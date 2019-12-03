@@ -93,6 +93,6 @@ class Article extends ActiveRecord
      */
     public function getBrand()
     {
-        return $this->hasOne(\execut\goods\models\Brand::className(), ['id' => 'goods_brand_id']);
+        return $this->hasOne(\execut\goods\models\Brand::class, ['id' => 'goods_brand_id']);
     }
 }

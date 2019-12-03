@@ -22,7 +22,7 @@ class Category extends ActiveRecord
      */
     public function getCategorie()
     {
-        return $this->hasOne(Category::className(), ['id' => 'details_categorie_id']);
+        return $this->hasOne(Category::class, ['id' => 'details_categorie_id']);
     }
 
     public function isCategory( ){
