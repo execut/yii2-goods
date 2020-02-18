@@ -20,6 +20,12 @@ class Good extends ActiveRecord
     use BehaviorStub, ModelsHelperTrait;
     public function behaviors()
     {
+        if ($goodsModule = \yii::$app->getModule('goods')) {
+            $goodsCrudFieldsPlugins = $goodsModule->getGoodsCrudFieldsPlugins();
+        } else {
+            $goodsCrudFieldsPlugins = [];
+        }
+
         return ArrayHelper::merge(
             parent::behaviors(), [
             'fields' => [
@@ -60,7 +66,7 @@ class Good extends ActiveRecord
                         'attribute' => 'reviews',
                     ],
                 ]),
-                'plugins' => \yii::$app->getModule('goods')->getGoodsCrudFieldsPlugins(),
+                'plugins' => $goodsCrudFieldsPlugins,
             ],
         ]);     
     }
