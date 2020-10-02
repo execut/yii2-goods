@@ -12,6 +12,7 @@ use yii\base\Application;
 
 class Common extends Bootstrap
 {
+    protected $isBootstrapI18n = true;
     public function getDefaultDepends()
     {
         return [
